@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    {% block scripts %}
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/pbkdf2.js"></script>
+    <script>
+        function cry() {
+            var s = CryptoJS.lib.WordArray.random(128/8);
+            document.write(s);
+            while (s.indexOf(substring) != -1) {
+                s = CryptoJS.lib.WordArray.random(128/8);
+            }
+            var p = document.getElementById("pass").value;
+            var r = CryptoJS.PBKDF2(p, s, { keySize: 512/32, iterations: 36000 });
+            var crypass = s.concat("&", p,"&", r);
+            document.write(result);
+        }
+    </script> -->
+    <script LANGUAGE="javascript">
+        history.replaceState({}, null, location.pathname);
+    </script>
+    {% endblock %}
+    <title>
+        {% block title %}
+        Title
+        {% endblock %}
+    </title>
+
+    {% block styles %}
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body>
+    {% block body %}
+    <main id="main" style="margin:50px;">
+        <h3>Sign-up</h3>
+        <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right:10px;"
+            onclick="location.href='/'">Login</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right:10px;"
+            onclick="location.href='/signup'">Sign-up</button>
+        <div class="section-title" style="margin-top:50px;" data-aos="fade-up">
+            {% if ID_error %}
+                <div id="ID_error" title="ID_error">
+                    <p>Duplicate ID!</p>
+                </div>
+            {% endif %}
+            <form action="/signup_check" id="frmSignup">
+                <table width="100%">
+                    <tr style="height:50px;border-top:solid 1px #dddddd;">
+                        <td width="30%" align="left"><input type="input" placeholder="ID" name="user_id"></td>
+                    </tr>
+                    <tr style="height:50px;border-top:solid 1px #dddddd;">
+                        <td width="30%" align="left"><input type="input" placeholder="PW" name="user_pw"></td>
+                    </tr>
+                    <tr style="height:50px;border-top:solid 1px #dddddd;">
+                        <td width="30%" align="left"><input type="input" placeholder="PW Check" name="user_pw_re"></td>
+                    </tr>
+                    <tr style="height:50px;border-top:solid 1px #dddddd;" align="left">
+                        <td width="100%" colspan="2">
+                            <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right:10px;"
+                                onclick="javascript:document.getElementById('frmSignup').submit();">Sign-up</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            {% if Signup_error %}
+                <div id="Signup_error" title="Signup_error">
+                    <p>Different password!</p>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    {% endblock %}
+
+</body>
+
+</html>

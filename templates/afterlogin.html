@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    {% block scripts %}
+    <script LANGUAGE="javascript">
+        history.replaceState({}, null, location.pathname);
+    </script>
+    {% endblock %}
+    <title>
+        {% block title %}
+        Title
+        {% endblock %}
+    </title>
+
+    {% block styles %}
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body>
+    {% block body %}
+    <main id="main" style="margin:50px;">
+        <h2>After Login</h2>
+        <div>
+            <ul>
+                <li>
+                    Login Success!
+                </li>
+                <li>
+                    Item only for member!1
+                </li>
+                <li>
+                    Item only for member!2
+                </li>
+            </ul>
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right:10px;"
+            onclick="location.href='/logout'">Logout</button>
+    </main>
+    {% endblock %}
+
+</body>
+
+</html>
